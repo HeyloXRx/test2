@@ -90,30 +90,7 @@
       </div>
     </div>
     <div class="gap"></div>
-    <div class="nearby">
-      <h3 class="nearby_title">附近店铺</h3>
-      <div class="nearby_item" v-for="item in nearbyList" :key="item.title">
-        <img
-          src="http://www.dell-lee.com/imgs/vue3/near.png"
-          class="nearby_item_img"
-        />
-        <div class="nearby_content">
-          <div class="nearby_content_title">{{ item.title }}</div>
-          <div class="nearby_content_tags">
-            <span
-              class="nearby_content_tag"
-              v-for="(innerItem, innerIndex) in item.tags"
-              :key="innerIndex"
-              >{{ innerItem }}</span
-            >
-          </div>
-          <p class="nearby_content_highlight">
-            vip尊享优惠，还不快快上贡感恩戴德
-          </p>
-          <div class="nearby_content_title"></div>
-        </div>
-      </div>
-    </div>
+    <Nearby />
   </div>
   <div class="docker">
     <div
@@ -128,9 +105,11 @@
   </div>
 </template>
 <script>
+import Nearby from './Nearby.vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Home",
+  components:{Nearby},
   setup() {
     const dockerList = [
       { icon: "&#xe88b;", text: "首页" },
@@ -147,7 +126,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .wrapper {
   overflow-y: auto;
   position: absolute;
@@ -218,43 +197,7 @@ export default {
   height: 0.16rem;
   background: #f1f1f1;
 }
-.nearby {
-  &_title {
-    margin: 0.16rem 0 0.02rem 0;
-    font-size: 0.18rem;
-    color: #333;
-    font-weight: normal;
-  }
-  &_item {
-    display: flex;
-    &_img {
-      margin-right: 0.16rem;
-      width: 0.56rem;
-      height: 0.56rem;
-    }
-  }
-  &_content {
-    padding-bottom: 0.12rem;
-    flex: 1;
-    &_title {
-      line-height: 0.22rem;
-      font-size: 0.16rem;
-      color: #333;
-    }
-    &_tags {
-      line-height: 0.18rem;
-      font-size: 0.13rem;
-      color: #333;
-      margin-top: 0.08rem;
-    }
-    &_tag {
-      margin-right: 0.16rem;
-    }
-    &_highlight {
-      color: red;
-    }
-  }
-}
+
 .docker {
   display: flex;
   position: absolute;
